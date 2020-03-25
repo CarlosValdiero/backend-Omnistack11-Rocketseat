@@ -50,7 +50,9 @@ module.exports = {
 			return res.status(401);
 		}
 
-		await connection('incidents').delete(id);
+		await connection('incidents')
+			.where('id', id)
+			.delete();
 
 		return res.status(204).send();
 	}
